@@ -1,0 +1,2 @@
+Page Title is Promise { <pending> }
+Page URL is https://stag-app.joinditto.in/fq

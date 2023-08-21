@@ -1,0 +1,6 @@
+Gender is Mandatory
+DOB is Mandatory
+Smoke Field is Mandatory
+Male
+Female
+Others
