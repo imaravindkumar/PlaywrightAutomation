@@ -1,7 +1,9 @@
+import { stagingOne } from "../uitlities/mainData";
+
 const { test, expect } = require("@playwright/test");
 
 const openFlow = async ({ page }) => {
-	await page.goto("https://stag-app.joinditto.in/fq");
+	await page.goto(stagingOne);
 	await page.locator("text=Optima Restore").click();
 	await page.locator("//span[contains(text(), 'For self')]").click();
 };
@@ -25,9 +27,16 @@ const commonErgoFlowForIndividual = () => {
 	// @ts-check
 };
 
+const beforeAllExecution = () => {
+	test.beforeAll(async ({ browser }) => {
+		page = await browser.newPage(); //Create a new Page instance
+	});
+}
+
 export {
 	fillAgeAndPincode,
 	fillPhoneNumberAndName,
 	enterOtpAndSubmit,
 	openFlow,
+	beforeAllExecution,
 };

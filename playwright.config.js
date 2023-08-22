@@ -12,6 +12,9 @@ const { defineConfig, devices } = require("@playwright/test");
  */
 module.exports = defineConfig({
 	testDir: "./tests",
+	expect:{
+		timeout: 10000,
+	},
 	/* Run tests in files in parallel */
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
 	forbidOnly: !!process.env.CI,
@@ -52,6 +55,12 @@ module.exports = defineConfig({
 			name: "chromium",
 			use: { ...devices["Desktop Chrome"], viewport: {width: 1536, height: 864} },
 		},
+		{
+		// name: 'Google Chrome',
+        //     use: {
+        //         channel: 'chrome',
+        //     },
+		// }	
 		/* Test against mobile viewports. */
 		// {
 		//   name: 'Mobile Chrome',

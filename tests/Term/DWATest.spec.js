@@ -1,12 +1,19 @@
 const { test, expect } = require('@playwright/test');
-//import { FunctionalLibrary } from '../commonFunctionalLibrary/FunctionalLibrary';
-//const functionmethod = new FunctionalLibrary(page);
-
+const { gotoURL,
+	clickonElement,
+	sendValuesToField, } = require('../../commonFunctionalLibrary/functionalLibrary');
 
 var DWAURL = 'https://stag-app.joinditto.in/fq';
 
-test('DWA Title Verification', async ({ page }) => {
-    await page.goto(DWAURL);
+test.describe('Test', async () => {
+  let page;
+  test.beforeAll(async ({ browser }) => {
+    page = await browser.newPage();
+  });
+
+test('DWA Title Verification', async () => {
+
+    await gotoURL(page);
   
     // Expect a title "to contain" a substring.
     const pageTitle = page.title();
@@ -17,12 +24,13 @@ test('DWA Title Verification', async ({ page }) => {
     //Validate URL
     const pageURL = page.url();
     console.log('Page URL is', pageURL);
-
     await expect(page).toHaveURL(DWAURL);
 
   });
-  test('ICICI Term FLow: Tell us about you', async ({ page }) => {
-    await page.goto(DWAURL);
+
+  test('ICICI Term FLow: Tell us about you', async () => {
+   // await page.goto(DWAURL);
+  //  await gotoURL(page);
     await page.locator("//span[contains(text(),'ICICI iProtect Smart')]").click();
   
     await page.click("//span[contains(text(),'Next')]");
@@ -59,14 +67,6 @@ test('DWA Title Verification', async ({ page }) => {
 
     await page.click("//span[contains(text(),'Next')]");
 
-
-    // await functionmethod.clickonElement("//span[contains(text(),'ICICI iProtect Smart')]");
-    // await functionmethod.clickonElement("//span[contains(text(),'Male')]");
-    // await functionmethod.sendValuesToField("//input[@name='dob']","01/01/2000");
-    // await functionmethod.clickonElement("//span[contains(text(),'No')]");
-    // await functionmethod.clickonElement("//span[contains(text(),'Next')]");
-
-
     await page.click("//span[contains(text(),'Next')]");
 
     const pincodeMandatory = await page.locator("//p[@id='text-input-pincode-helper-text']");
@@ -98,8 +98,8 @@ test('DWA Title Verification', async ({ page }) => {
 
     await page.click("//span[contains(text(),'Next')]");
 
-    
+
 
   });
-
+});
   
