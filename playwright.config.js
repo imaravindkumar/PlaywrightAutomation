@@ -55,7 +55,7 @@ module.exports = defineConfig({
 			name: "chromium",
 			use: { ...devices["Desktop Chrome"], viewport: {width: 1536, height: 864} },
 		},
-		{
+		
 		// name: 'Google Chrome',
         //     use: {
         //         channel: 'chrome',
