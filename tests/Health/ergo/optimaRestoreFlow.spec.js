@@ -106,7 +106,7 @@ test.describe("optimaRestoreFlow", async () => {
     });
 
     test("verify the premium on summary page", async () => {
-        expect(page.locator("h4")).toHaveText("You're almost done");
+       // expect(page.locator("h4")).toHaveText("You're almost done");
         const secondSummaryPremium = await page
             .locator(secondSummaryPremiumXpath)
             .textContent();

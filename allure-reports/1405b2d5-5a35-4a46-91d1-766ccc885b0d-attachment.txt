@@ -1,0 +1,14 @@
+Gender is Mandatory
+DOB is Mandatory
+Smoke Field is Mandatory
+Male
+Female
+Others
+Pincode is Mandatory
+Annual Income is Mandatory
+Monthly Expenses Field is Mandatory
+Diabetes Field is Mandatory
+The Add On is :: Terminal illness
+The Add On is :: Waiver of premium
+The Add On is :: Accidental cover
+The Add On is :: Critical illness

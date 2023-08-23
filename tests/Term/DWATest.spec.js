@@ -92,14 +92,89 @@ test('DWA Title Verification', async () => {
 
     await page.fill("//input[@id='text-input-mExpenses']","25000");
 
+    await page.click("//span[contains(text(),'Next')]");
+
     await page.click("//span[contains(text(),'No')]");
 
     await page.click("//span[contains(text(),'Next')]");
 
     await page.click("//span[contains(text(),'Next')]");
 
+    await page.click("//div[text()='Regular Pay']");
 
+    await page.click("//span[contains(text(),'Next')]"); 
 
+    const addonZero = await page.locator("(//span[text()='Life stage benefit'])[1]").textContent();
+    console.log("The Add On is :: "+addonZero);
+
+    await page.click("//span[contains(text(),'Next')]");
+
+    const addonOne = await page.locator("(//span[text()='Terminal illness'])[1]").textContent();
+    console.log("The Add On is :: "+addonOne);
+    await page.click("//span[contains(text(),'Next')]");
+
+    const addoTwo = await page.locator("(//span[text()='Waiver of premium'])[1]").textContent();
+    console.log("The Add On is :: "+addoTwo);
+
+    await page.click("//span[contains(text(),'Next')]");
+
+    const addoThree = await page.locator("//span[text()='Accidental cover']").textContent();
+    console.log("The Add On is :: "+addoThree);
+
+    await page.click("//span[contains(text(),'Next')]");
+
+    
+    const addonFour = await page.locator("//span[text()='Critical illness']").textContent();
+    console.log("The Add On is :: "+addonFour);
+
+    await page.click("//span[contains(text(),'Next')]");
+
+    await page.click("//span[text()='Buy this']"); 
+
+    await page.click("//span[text()='Confirm and buy']"); 
+    
+    await page.fill("//input[@name='fullName']","Test Policy");
+
+    await page.fill("//input[@name='mobile']","9999999991");
+
+    await page.click("//span[text()='Send OTP']");
+    
+    // await page.fill("//input[@name='otp']","123456");
+
+    // await page.click("//span[text()='Submit']");
+
+    
   });
+ /* test('Proposal Form', async () => {
+
+    await page.click("//span[text()='Start']");
+
+    // await textArea.focus();
+    // await screen.keyboard.press("Meta+A");
+    // await screen.keyboard.press("Backspace");
+
+    page.locator("//input[@name='firstName']").selecttext();
+    page.keyboard().press("Backspace");
+
+    page.locator("//input[@name='firstName']").fill("TestPolicy PolicyPolicy");
+    page.locator("//input[@name='lastName']").fill("PolicyPolicy");
+
+    const editableDob = page.locator("//input[@name='dob']").isEditable();
+    console.log("The Dob editable value :: "+editableDob);
+    if(editableDob){
+      console.log("The DOB is Not Editable it is Correct");
+    }
+    else{
+      console.log("The DOB is Editable it is Incorrect");
+    }
+
+    page.locator("//input[@name='email']").fill("PolicyPolicy1234@gmail.com");
+
+    page.click("//div[@id='select-education']");
+
+    page.click("");
+
+  }); */
+
 });
   
