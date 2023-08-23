@@ -26,14 +26,16 @@ module.exports = defineConfig({
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
 	reporter: [
 		["html"],
-		[
-			"allure-playwright",
-			{
-				detail: true,
-				outputFolder: "allure-reports",
-				suiteTitle: false,
-			},
-		],
+		['./myallurereport.js'],
+		['allure-playwright', {outputFolder: 'allure-results'}],
+		// [
+		// 	"allure-playwright",
+		// 	{
+		// 		detail: true,
+		// 		outputFolder: "allure-reports",
+		// 		suiteTitle: false,
+		// 	},
+		// ],
 
 		//reporter: [['json', { outputFile: 'results.json' }]],
 	],
