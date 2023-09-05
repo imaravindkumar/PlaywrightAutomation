@@ -1,0 +1,17 @@
+Your age is a required field
+Pin code is required
+Premium From the Cover Amount ::  ₹8,419  / 1 year
+Premium From the Pricing Card ::  ₹8,419 / 1 year
+Premiums Are Correct
+Premium From the Cover Amount ::  ₹16,209  / 2 year
+Premium From the Pricing Card ::  ₹16,209 / 2 years
+Premiums Are Correct
+Premium From the Cover Amount ::  ₹23,787  / 3 year
+Premium From the Pricing Card ::  ₹23,787 / 3 years
+Premiums Are Correct
+The total Premium Amount in Pricing Card is :: ₹23,787.40
+The Cover Amount Premium is :: ₹23,787 
+Total Premium is Correct with Cover Amount Premium
+Premium From the Cover Amount ::  ₹8,419  / 1 year
+Premium From the Pricing Card ::  ₹8,419 / 1 year
+Premiums Are Correct

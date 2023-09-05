@@ -1,15 +1,11 @@
-import { randomInt } from "crypto"
-
-const stagingOne = 'https://stag-app.joinditto.in/fq'
-
-
-// const ageBand = randomInt(18, 65)
-
-
+const stagingOne = 'https://stag-care.joinditto.in/fq'
+const authPersonName = "TestingPolicy";
+const authmobileNumber = "9999999991";
+const authmobileOTPNumber = "123456";
 
 
 
 
 export {
-    stagingOne
+    stagingOne,authPersonName,authmobileNumber,authmobileOTPNumber,
 }

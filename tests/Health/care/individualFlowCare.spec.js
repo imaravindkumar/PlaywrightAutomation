@@ -5,7 +5,7 @@ const { continueButton, calculatePremiumButton, buyThisButton, editButton, impor
 const { authPersonName, authmobileNumber, authmobileOTPNumber } = require('../../../uitlities/mainData');
 
 let DWAURL = 'https://stag-care.joinditto.in/fq';
-let titleOfApplication = "Ditto | Insurance made simple";
+let titleOfApplication = 'Ditto | Insurance made simple';
 let premiumcoverAmount = ['₹5 L', '₹7 L', '₹10 L', '₹15 L'] 
 let proposalGenderList = [ 'Gender', 'Male', 'Female' ]
 test.describe('Care Supreme - Regression Flow', async () => {
@@ -45,7 +45,7 @@ test.describe('Care Supreme - Regression Flow', async () => {
   });
  test('Care Supreme - Indiviual Flow', async () => {
     let ageMandatoryActualText = "Your age is a required field";
-    let minageActualText = "Minimum age should 18";
+    let minageActualText = "Minimum age should be 18";
     let pincodeMandatoryActualText = "Pin code is required";
     let invalidPincodeMandatoryActualText = "Invalid pincode or not allowed by insurer";
 
