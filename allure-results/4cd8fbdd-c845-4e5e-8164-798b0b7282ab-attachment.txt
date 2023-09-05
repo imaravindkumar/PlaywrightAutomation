@@ -1,0 +1,64 @@
+[
+  {
+    "Iteration_No": 1,
+    "Age": 24,
+    "Pincode": 560001,
+    "Annual_income": 1000000,
+    "MonthlyExp": 25000
+  },
+  {
+    "Iteration_No": 2,
+    "Age": 25,
+    "Pincode": 560002,
+    "Annual_income": 1500000,
+    "MonthlyExp": 30000
+  }
+]
+[
+  {
+    "Iteration_No": 1,
+    "Age": 24,
+    "Pincode": 560001,
+    "Annual_income": 1000000,
+    "MonthlyExp": 25000
+  },
+  {
+    "Iteration_No": 2,
+    "Age": 25,
+    "Pincode": 560002,
+    "Annual_income": 1500000,
+    "MonthlyExp": 30000
+  }
+]
+[
+  {
+    "Iteration_No": 1,
+    "Age": 24,
+    "Pincode": 560001,
+    "Annual_income": 1000000,
+    "MonthlyExp": 25000
+  },
+  {
+    "Iteration_No": 2,
+    "Age": 25,
+    "Pincode": 560002,
+    "Annual_income": 1500000,
+    "MonthlyExp": 30000
+  }
+]
+[
+  {
+    "Iteration_No": 1,
+    "Age": 24,
+    "Pincode": 560001,
+    "Annual_income": 1000000,
+    "MonthlyExp": 25000
+  },
+  {
+    "Iteration_No": 2,
+    "Age": 25,
+    "Pincode": 560002,
+    "Annual_income": 1500000,
+    "MonthlyExp": 30000
+  }
+]

@@ -45,17 +45,20 @@ module.exports = defineConfig({
 		// baseURL: 'http://127.0.0.1:3000',
 
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+		viewport : null,
 		trace: "on-first-retry",
 		screenshot: "on",
 		video: "retain-on-failure",
 		headless: false,
+		browserName : "chromium",
+		launchOptions : {args: ["--start-maximized"] },
 	},
 
 	/* Configure projects for major browsers */
 	projects: [
 		{
 			name: "chromium",
-			use: { ...devices["Desktop Chrome"], viewport: {width: 1536, height: 864} },
+			//use: { ...devices["Desktop Chrome"], viewport: {width: 1536, height: 864} },
 		},
 		
 		// name: 'Google Chrome',

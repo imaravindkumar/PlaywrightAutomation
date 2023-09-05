@@ -1,7 +1,9 @@
 const { test, expect } = require('@playwright/test');
+
 const { gotoURL,
 	clickonElement,
 	sendValuesToField, } = require('../../commonFunctionalLibrary/functionalLibrary');
+const { readexcelfile } = require('../../excelread');
 
 var DWAURL = 'https://stag-app.joinditto.in/fq';
 
@@ -16,13 +18,13 @@ test('DWA Title Verification', async () => {
     await gotoURL(page);
   
     // Expect a title "to contain" a substring.
-    const pageTitle = page.title();
+    const pageTitle = await page.title();
     console.log('Page Title is', pageTitle);
 
     await expect(page).toHaveTitle('Ditto | Insurance made simple');
 
     //Validate URL
-    const pageURL = page.url();
+    const pageURL = await page.url();
     console.log('Page URL is', pageURL);
     await expect(page).toHaveURL(DWAURL);
 
@@ -177,4 +179,3 @@ test('DWA Title Verification', async () => {
   }); */
 
 });
-  

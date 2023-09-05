@@ -23,5 +23,9 @@
 		"copyfiles": "^2.4.1",
 		"npm-check-updates": "^16.9.0",
 		"rimraf": "^5.0.1"
+	},
+	"dependencies": {
+		"exceljs": "^4.3.0",
+		"xlsx": "^0.18.5"
 	}
 }
