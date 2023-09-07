@@ -32,6 +32,7 @@ const commonErgoFlowForIndividual = () => {
 //Care Functions
 //URL Navigation
 const urlNavigation = async (page) => {
+	console.log(stagingOne)
 	await page.goto(stagingOne);
 };
 

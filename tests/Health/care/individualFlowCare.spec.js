@@ -1,23 +1,32 @@
 const { test, expect } = require('@playwright/test');
 const { clickOnElement, urlNavigation, getText, validateText, sendValues, randomNumber, randomListClick, premiumValidation, otpValidation, getAttributeValues, checkElementIsDisabled, compareList, getListValue, comapareList, selectValueFromDropDown, randomEmailGenerator, splitString, clickonCheckBoxList, getCurrentDate, randomTextGenerator } = require('../../../fixtures/common');
-const { insuranceselection, insurancepolicyfor, ageMandatory, pincodeMandatory, coverAmount, pincode, yourAge, oneYearPremium, premiumAmount, premiumYear, twoYearPremium, threeYearPremium, totalPremiumAmount, fieldVerification, cumulativeBonusCheckBoxXpath } = require('../../../pages/Health/care/careLocators');
+const { insuranceselection, insurancepolicyfor, ageMandatory, pincodeMandatory, coverAmount, pincode, yourAge, oneYearPremium, premiumAmount, premiumYear, twoYearPremium, threeYearPremium, totalPremiumAmount, fieldVerification, cumulativeBonusCheckBoxXpath, pincodeXpath, premiumListXpath, alertMessage } = require('../../../pages/Health/care/careLocators');
 const { continueButton, calculatePremiumButton, buyThisButton, editButton, importantNoteMessage, cancelButton, confirmAndBuyButton, popUpPremiumXpath, startButton, panXpath, dobXpath, fetchButton, clickonYesDetails, resumeButton, proposalFullName, kycPersonNameXpath, kycPersonDOBXpath, proposaldob, proposalFullNameXpath, proposaldobXpath, proposalPANXpath, proposalGenderXpath, listElementsFromDropDown, proposalAddressTwo, proposalEmailAddress, proposalAddressOne, kycPersonAddressXpath, proposalEmailAddressXpath, proposalAddressOneXpath, proposalAddressTwoXpath, proposalEmailAddressValidFormatXpath, kycPersonAddressTwoXpath, proposalCityXpath, proposalEmailLabel, nextButton, proposalChangeinPreXpath, proposalChangeinPreTextXpath, okayButton, insuredFullName, insuredDOB, insuredFullNameXpath, insuredDOBXpath, insuredHeightXpath, insuredWeightsXpath, insuredWeightText, insuredWeightTextXpath, insuredWeightMandatoryXpath, medicalQuestionOneMandatoryXpath, medicalQuestionTwoMandatoryXpath, medicalQuestionOneXpath, medicalQuestionTwoXpath, medicalQuestionOneFullNameXpath, medicalQuestionTwoFullNameXpath, medicalQuestionOneQueListXpath, medicalQuestionOneCheckBoxListXpath, medicalQueOneNoneXpath, medicalQueTwoNoneXpath, lifeDateFieldXpath, lifeOtherDetailsXpath, nomineeFullnameXpath, nomineeRelationshipXpath, summaryDeclarationxpath, confirmButton, applicationNumberXpath, nomineeFullnameMandatoryXpath } = require('../../../fixtures/commonXpaths');
 const { authPersonName, authmobileNumber, authmobileOTPNumber } = require('../../../uitlities/mainData');
+
+const careSupremeIndiviualFlowFunction = async (pincode, age, annual_income) => {
+console.log(pincode, age, annual_income);
 
 let DWAURL = 'https://stag-care.joinditto.in/fq';
 let titleOfApplication = 'Ditto | Insurance made simple';
 let premiumcoverAmount = ['₹5 L', '₹7 L', '₹10 L', '₹15 L'] 
 let proposalGenderList = [ 'Gender', 'Male', 'Female' ]
-test.describe('Care Supreme - Regression Flow', async () => {
+test.describe(`Care Supreme - Regression Flow  ${pincode} ${age} `, async () => {
     let page;
     let pan = "BWPPA6961A";
     let dob = "03/12/1998";
     let kycPersonName, kycPersonDOB, kycPersonAddress, kycPersonPan, kycPersonPincode,proposalFullNameValue,proposalDOBValue;
+    let pincodeString = String(pincode);
+	let ageString = String(age);
+
     test.beforeAll(async ({ browser }) => {
       page = await browser.newPage();
-     
     });
   
+    test.afterAll(async () => {
+        page.close();
+    });
+
   test('Care Supreme - Insurance Selection For Page', async () => {
   
     //Navigation to the URL
@@ -67,8 +76,9 @@ test.describe('Care Supreme - Regression Flow', async () => {
 
     await sendValues(page,yourAge,"");
 
-    const randomValue = await randomNumber(18,99);
-    await sendValues(page,yourAge,randomValue);
+    //const randomValue = await randomNumber(18,99);
+   
+    await sendValues(page,yourAge,ageString);
 
     await sendValues(page,pincode,"583000");
 
@@ -76,26 +86,43 @@ test.describe('Care Supreme - Regression Flow', async () => {
 
     await validateText(page,pincodeMandatory,invalidPincodeMandatoryActualText);
   
-    await sendValues(page,pincode,"");
+    await sendValues(page,pincodeXpath,"");
 
-    await sendValues(page,pincode,"560001");
+    await sendValues(page,pincodeXpath,pincodeString);
 
     //Need to check clicking on Random Select
    // await randomListClick(page,coverAmount);
 
    await clickOnElement(page,calculatePremiumButton);
 
-   if(randomValue >45)
+   if(ageString >45)
    {
     await clickOnElement(page,cumulativeBonusCheckBoxXpath);
    }
 
-   await premiumValidation(page,oneYearPremium,premiumAmount,premiumYear," / 1 year");
-   
-   await premiumValidation(page,twoYearPremium,premiumAmount,premiumYear," / 2 year");
+   if(ageString<46)
+   {
+        let addonAlertMessage = "If the eldest member age is below 46 years, Care mandates opting for Cumulative Bonus Super rider.";
+        await clickOnElement(page,cumulativeBonusCheckBoxXpath);
+        let uncheckAddon = await page.locator(alertMessage).isVisible();
+        if (uncheckAddon) {
+            await expect.soft(page.locator(getalertMessageText)).toHaveText(addonAlertMessage);
+            await clickOnElement(page, okayButton);
+        }
+        else{
+            console.log("Alert Message is not displayed as expected.")
+        }
+   }
 
-   await premiumValidation(page,threeYearPremium,premiumAmount,premiumYear," / 3 year");
+   let premiumListOptions = await page.$$(premiumListXpath);
+     for (let premiumOption of premiumListOptions) {
+         await premiumOption.click();
+         await premiumValidation(page, oneYearPremium, premiumAmount, premiumYear, " / 1 year");
 
+         await premiumValidation(page, twoYearPremium, premiumAmount, premiumYear, " / 2 year");
+
+         await premiumValidation(page, threeYearPremium, premiumAmount, premiumYear, " / 3 year");
+     }
 
    let totalPremiumAmountInPricingCard = await getText(page,totalPremiumAmount);
    Math.ceil(totalPremiumAmountInPricingCard);
@@ -360,3 +387,6 @@ test('Care Supreme - Proposal Form_Summary', async () => {
 
 }); */
 });
+}
+
+export { careSupremeIndiviualFlowFunction,};

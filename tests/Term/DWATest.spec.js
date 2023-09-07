@@ -1,9 +1,6 @@
 const { test, expect } = require('@playwright/test');
-
-const { gotoURL,
-	clickonElement,
-	sendValuesToField, } = require('../../commonFunctionalLibrary/functionalLibrary');
 const { readexcelfile } = require('../../excelread');
+const { urlNavigation } = require('../../fixtures/common');
 
 var DWAURL = 'https://stag-app.joinditto.in/fq';
 
@@ -15,7 +12,7 @@ test.describe('Test', async () => {
 
 test('DWA Title Verification', async () => {
 
-    await gotoURL(page);
+    await urlNavigation(page);
   
     // Expect a title "to contain" a substring.
     const pageTitle = await page.title();
@@ -31,8 +28,7 @@ test('DWA Title Verification', async () => {
   });
 
   test('ICICI Term FLow: Tell us about you', async () => {
-   // await page.goto(DWAURL);
-  //  await gotoURL(page);
+  
     await page.locator("//span[contains(text(),'ICICI iProtect Smart')]").click();
   
     await page.click("//span[contains(text(),'Next')]");
@@ -44,7 +40,6 @@ test('DWA Title Verification', async () => {
     const dobFieldMandatory = await page.locator("//p[@id='date-picker-dialog-dob-helper-text']");
     await expect(dobFieldMandatory).toBeVisible();
     console.log("DOB is Mandatory");
-
 
     const smokeFieldMandatory = await page.locator("(//p[@class='MuiFormHelperText-root Mui-error'][normalize-space()='Required'])[2]");
     await expect(smokeFieldMandatory).toBeVisible();

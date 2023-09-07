@@ -1,0 +1,2 @@
+Your age is a required field
+Pin code is required

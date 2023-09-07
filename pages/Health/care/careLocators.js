@@ -2,7 +2,7 @@ const insuranceselection = "//span[text()='Care Supreme']";
 const insurancepolicyfor = "//span[text()='You']";
 const yourAge = "//input[@name='age']";
 const ageMandatory = "//p[@id='text-input-age-helper-text']";
-const pincode = "//input[@name='pincode']";
+const pincodeXpath = "//input[@name='pincode']";
 const pincodeMandatory = "//p[@id='text-input-pincode-helper-text']";
 const coverAmount = "//div[contains(@class,'rec rec-carousel-item rec-carousel-item')]/div/div";
 const policyBrochure = "//span[text()='Policy brochure']";
@@ -14,6 +14,9 @@ const coverAmountOfthePolicy = "(//p[@class='MuiTypography-root MuiTypography-bo
 const premiumAmount = "(//p[@class='MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary']/span)[4]";
 const premiumYear = "(//p[@class='MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary']/span)[5]";
 const totalPremiumAmount = "(//p[@class='MuiTypography-root MuiTypography-body2 MuiTypography-alignRight'])[1]";
+const premiumListXpath = "//div[contains(@class,'rec rec-item-wrapper')]/div";
+const alertMessage = "//h6[text()='Alert']";
+const getalertMessageText = "//p[contains(text(),'If the')]";
 
 //Supreme Add-ons
 const cumulativeBonusCheckBoxXpath = "//input[@name='Cumulative Bonus Super']";
@@ -38,7 +41,7 @@ const fieldVerification = async(page, firstString, secondString, fieldName) => {
 
 
 export {
-	insuranceselection,insurancepolicyfor,yourAge,ageMandatory,pincode,pincodeMandatory,coverAmount,
+	insuranceselection,insurancepolicyfor,yourAge,ageMandatory,pincodeXpath,pincodeMandatory,coverAmount,premiumListXpath,alertMessage,getalertMessageText,
 	policyBrochure,oneYearPremium,twoYearPremium,threeYearPremium,coverAmountOfthePolicy,premiumAmount,premiumYear,totalPremiumAmount,
     cumulativeBonusCheckBoxXpath,annualHealthCheckBoxXpath,instantCoverCheckBoxXpath,claimShieldCheckBoxXpath,reductioninPedCheckBoxXpath,fieldVerification,
     
