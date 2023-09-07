@@ -1,16 +1,15 @@
 const { test, expect } = require('@playwright/test');
-const { clickOnElement, urlNavigation, getText, validateText, sendValues, randomNumber, randomListClick, premiumValidation, otpValidation, getAttributeValues, checkElementIsDisabled, compareList, getListValue, comapareList, selectValueFromDropDown, randomEmailGenerator, splitString, clickonCheckBoxList, getCurrentDate, randomTextGenerator } = require('../../../fixtures/common');
+const { clickOnElement, urlNavigation, getText, validateText, sendValues, randomNumber, randomListClick, premiumValidation, otpValidation, getAttributeValues, checkElementIsDisabled, compareList, getListValue, comapareList, selectValueFromDropDown, randomEmailGenerator, splitString, clickonCheckBoxList, getCurrentDate, randomTextGenerator, pageTitle, pageURL } = require('../../../fixtures/common');
 const { insuranceselection, insurancepolicyfor, ageMandatory, pincodeMandatory, coverAmount, pincode, yourAge, oneYearPremium, premiumAmount, premiumYear, twoYearPremium, threeYearPremium, totalPremiumAmount, fieldVerification, cumulativeBonusCheckBoxXpath, pincodeXpath, premiumListXpath, alertMessage } = require('../../../pages/Health/care/careLocators');
 const { continueButton, calculatePremiumButton, buyThisButton, editButton, importantNoteMessage, cancelButton, confirmAndBuyButton, popUpPremiumXpath, startButton, panXpath, dobXpath, fetchButton, clickonYesDetails, resumeButton, proposalFullName, kycPersonNameXpath, kycPersonDOBXpath, proposaldob, proposalFullNameXpath, proposaldobXpath, proposalPANXpath, proposalGenderXpath, listElementsFromDropDown, proposalAddressTwo, proposalEmailAddress, proposalAddressOne, kycPersonAddressXpath, proposalEmailAddressXpath, proposalAddressOneXpath, proposalAddressTwoXpath, proposalEmailAddressValidFormatXpath, kycPersonAddressTwoXpath, proposalCityXpath, proposalEmailLabel, nextButton, proposalChangeinPreXpath, proposalChangeinPreTextXpath, okayButton, insuredFullName, insuredDOB, insuredFullNameXpath, insuredDOBXpath, insuredHeightXpath, insuredWeightsXpath, insuredWeightText, insuredWeightTextXpath, insuredWeightMandatoryXpath, medicalQuestionOneMandatoryXpath, medicalQuestionTwoMandatoryXpath, medicalQuestionOneXpath, medicalQuestionTwoXpath, medicalQuestionOneFullNameXpath, medicalQuestionTwoFullNameXpath, medicalQuestionOneQueListXpath, medicalQuestionOneCheckBoxListXpath, medicalQueOneNoneXpath, medicalQueTwoNoneXpath, lifeDateFieldXpath, lifeOtherDetailsXpath, nomineeFullnameXpath, nomineeRelationshipXpath, summaryDeclarationxpath, confirmButton, applicationNumberXpath, nomineeFullnameMandatoryXpath } = require('../../../fixtures/commonXpaths');
-const { authPersonName, authmobileNumber, authmobileOTPNumber } = require('../../../uitlities/mainData');
+const { authPersonName, authmobileNumber, authmobileOTPNumber, stagingURL } = require('../../../uitlities/mainData');
 
 const careSupremeIndiviualFlowFunction = async (pincode, age, annual_income) => {
 console.log(pincode, age, annual_income);
 
-let DWAURL = 'https://stag-care.joinditto.in/fq';
-let titleOfApplication = 'Ditto | Insurance made simple';
-let premiumcoverAmount = ['₹5 L', '₹7 L', '₹10 L', '₹15 L'] 
-let proposalGenderList = [ 'Gender', 'Male', 'Female' ]
+let titleOfApplication = "Ditto | Insurance made simple";
+let premiumcoverAmount = ['₹5 L', '₹7 L', '₹10 L', '₹15 L'];
+let proposalGenderList = [ 'Gender', 'Male', 'Female' ];
 test.describe(`Care Supreme - Regression Flow  ${pincode} ${age} `, async () => {
     let page;
     let pan = "BWPPA6961A";
@@ -33,14 +32,10 @@ test.describe(`Care Supreme - Regression Flow  ${pincode} ${age} `, async () => 
     await urlNavigation(page);
     
     //Title Verification
-    const pageTitle = await page.title();
-    console.log('Page Title is :: ', pageTitle);
-    await expect.soft(page).toHaveTitle(titleOfApplication);
+    await pageTitle(page, titleOfApplication);
 
     //Validate URL
-    const pageURL = await page.url();
-    console.log('Page URL is :: ', pageURL);
-    await expect.soft(page).toHaveURL(DWAURL);
+    await pageURL(page);
 
     //Click on Care Supreme
     await clickOnElement(page,insuranceselection);

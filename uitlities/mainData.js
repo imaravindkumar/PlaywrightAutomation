@@ -1,4 +1,4 @@
-const stagingOne = 'https://stag-care.joinditto.in/fq'
+const stagingURL = "https://stag-care.joinditto.in/fq";
 const authPersonName = "TestingPolicy";
 const authmobileNumber = "9999999991";
 const authmobileOTPNumber = "123456";
@@ -7,5 +7,5 @@ const authmobileOTPNumber = "123456";
 
 
 export {
-    stagingOne,authPersonName,authmobileNumber,authmobileOTPNumber,
+    stagingURL,authPersonName,authmobileNumber,authmobileOTPNumber,
 }

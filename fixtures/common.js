@@ -1,10 +1,10 @@
-import { stagingOne } from "../uitlities/mainData";
+import { stagingOne, stagingURL } from "../uitlities/mainData";
 import { clickOTPText, inputOTP, medicalQuestionDate, medicalQuestionErrorXpath, mobileNumberField, mobileNumberRequired, nameField, nameRequired, otpIsRequired, sendOtpButton, submitButton } from "./commonXpaths";
 
 const { test, expect } = require("@playwright/test");
 
 const openFlow = async ({ page }) => {
-	await page.goto(stagingOne);
+	await page.goto(stagingURL);
 	await page.locator("text=Optima Restore").click();
 	await page.locator("//span[contains(text(), 'For self')]").click();
 };
@@ -32,9 +32,22 @@ const commonErgoFlowForIndividual = () => {
 //Care Functions
 //URL Navigation
 const urlNavigation = async (page) => {
-	console.log(stagingOne)
-	await page.goto(stagingOne);
+	console.log(stagingURL)
+	await page.goto(stagingURL);
 };
+
+ //Title Verification
+const pageTitle = async (page, titleString) => {
+	const title = await page.title();
+	console.log('Page Title is :: ', title);
+	await expect.soft(page).toHaveTitle(titleString);
+ }
+ //URL Verification
+const pageURL = async (page)=> {
+	const pageUrlValue = await page.url();
+	console.log('Page URL is :: ', pageUpageUrlValueRL);
+	await expect.soft(page).toHaveURL(stagingURL);
+ }
 
 //Clicking on Element
 const clickOnElement = async (page, locatorValue) => {
@@ -244,7 +257,7 @@ const randomEmailGenerator = async (page) => {
   }
 
 export {
-	fillAgeAndPincode,fillPhoneNumberAndName,enterOtpAndSubmit,openFlow,urlNavigation,
+	fillAgeAndPincode,pageTitle,pageURL,fillPhoneNumberAndName,enterOtpAndSubmit,openFlow,urlNavigation,
 	clickOnElement,getText,validateText,sendValues,randomNumber,randomListClick,premiumValidation,otpValidation,getAttributeValues,
 	checkElementIsDisabled,getListValue,comapareList,selectValueFromDropDown,randomEmailGenerator,splitString,getCurrentDate,clickonCheckBoxList,
 	stringSlice,randomTextGenerator,
